@@ -69,10 +69,9 @@ class EntryExtractionFilterSet(df.FilterSet):
             if isinstance(value[0], int):
                 # coming from saved query
                 return qs.filter(figures__role__in=value).distinct()
-            else:
-                # coming from client side
-                return qs.filter(figures__role__in=[Figure.ROLE.get(item).value for item in
-                                                    value]).distinct()
+            return qs.filter(figures__role__in=[
+                Figure.ROLE.get(item).value for item in value
+            ]).distinct()
         return qs
 
     def filter_tags(self, qs, name, value):
@@ -85,11 +84,10 @@ class EntryExtractionFilterSet(df.FilterSet):
             if isinstance(value[0], int):
                 # coming from saved query
                 return qs.filter(event__event_type__in=value).distinct()
-            else:
-                # coming from client side
-                return qs.filter(event__event_type__in=[
-                    Crisis.CRISIS_TYPE.get(item).value for item in value
-                ])
+            # coming from client side
+            return qs.filter(event__event_type__in=[
+                Crisis.CRISIS_TYPE.get(item).value for item in value
+            ])
         return qs
 
 
@@ -146,12 +144,12 @@ class FigureExtractionFilterSet(df.FilterSet):
                     # for stock, we only have start date
                     category__type=STOCK,
                     start_date__gte=self.data['filter_figure_start_after'],
-                    start_date__lt=self.data['filter_figure_end_before'],
+                    start_date__lte=self.data['filter_figure_end_before'],
                 ) | Q(
                     # for flow, we will look into end dates
                     category__type=FLOW,
                     end_date__gte=self.data['filter_figure_start_after'],
-                    end_date__lt=self.data['filter_figure_end_before'],
+                    end_date__lte=self.data['filter_figure_end_before'],
                 )
             )
         return qs.distinct()
