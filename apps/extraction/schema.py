@@ -1,6 +1,6 @@
 import graphene
 from graphene_django import DjangoObjectType
-from graphene_django_extras import DjangoObjectField, PageGraphqlPagination
+from graphene_django_extras import DjangoObjectField
 import logging
 
 from apps.extraction.filters import EntryExtractionFilterSet, ExtractionQueryFilter
@@ -10,6 +10,7 @@ from apps.extraction.models import (
 from apps.entry.schema import EntryListType
 from apps.entry.enums import RoleGrapheneEnum
 from apps.crisis.enums import CrisisTypeGrapheneEnum
+from utils.pagination import PageGraphqlPagination
 from utils.graphene.types import CustomDjangoListObjectType
 from utils.graphene.fields import DjangoPaginatedListObjectField
 

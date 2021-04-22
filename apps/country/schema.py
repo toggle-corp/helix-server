@@ -2,7 +2,6 @@ import graphene
 from graphene.types.utils import get_type
 from graphene_django import DjangoObjectType
 from graphene_django_extras import (
-    PageGraphqlPagination,
     DjangoObjectField,
 )
 
@@ -21,6 +20,7 @@ from apps.country.filters import (
     GeographicalGroupFilter,
 )
 from apps.crisis.enums import CrisisTypeGrapheneEnum
+from utils.pagination import PageGraphqlPagination
 from utils.graphene.types import CustomDjangoListObjectType
 from utils.graphene.fields import DjangoPaginatedListObjectField
 

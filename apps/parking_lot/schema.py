@@ -1,10 +1,11 @@
 import graphene
 from graphene_django import DjangoObjectType
-from graphene_django_extras import PageGraphqlPagination, DjangoObjectField
+from graphene_django_extras import DjangoObjectField
 
 from apps.parking_lot.models import ParkedItem
 from apps.parking_lot.enums import ParkedItemGrapheneEnum
 from apps.parking_lot.filters import ParkingLotFilter
+from utils.pagination import PageGraphqlPagination
 from utils.graphene.types import CustomDjangoListObjectType
 from utils.graphene.fields import DjangoPaginatedListObjectField
 
