@@ -125,6 +125,10 @@ class CountryType(DjangoObjectType):
         pagination=PageGraphqlPagination(
             page_size_query_param='pageSize'
         ), accessor='figures'))
+    geojson_url = graphene.String()
+
+    def resolve_geojson_url(root, info, **kwargs):
+        return info.context.build_absolute_uri(Country.geojson_path(root.iso3))
 
     @staticmethod
     def get_queryset(queryset, info):

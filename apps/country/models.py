@@ -24,6 +24,8 @@ class CountryRegion(models.Model):
 
 
 class Country(models.Model):
+    GEOJSON_PATH = 'geojsons'
+
     name = models.CharField(verbose_name=_('Name'), max_length=256)
     geographical_group = models.ForeignKey('GeographicalGroup', verbose_name=_('Geographical Group'), null=True,
                                            on_delete=models.SET_NULL)
@@ -44,6 +46,11 @@ class Country(models.Model):
     idmc_short_name_es = models.CharField(verbose_name=_('IDMC Short Name Es'), max_length=256, null=True)
     idmc_short_name_fr = models.CharField(verbose_name=_('IDMC Short Name Fr'), max_length=256, null=True)
     idmc_short_name_ar = models.CharField(verbose_name=_('IDMC Short Name Ar'), max_length=256, null=True)
+
+    @classmethod
+    def geojson_path(cls, iso3):
+        if iso3:
+            return f'{cls.GEOJSON_PATH}/{iso3.upper()}.json'
 
     @property
     def entries(self):
