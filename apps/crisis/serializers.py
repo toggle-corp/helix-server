@@ -64,7 +64,7 @@ class CrisisSerializer(serializers.ModelSerializer):
         if not self.instance:
             return errors
 
-        countries = attrs.get('countries')
+        countries = attrs.get('countries', [])
         if countries is None:
             return errors
         event_countries = self.instance.events.filter(countries__isnull=False).values_list('countries', flat=True)
@@ -96,7 +96,7 @@ class CrisisSerializer(serializers.ModelSerializer):
 
     def validate_empty_countries(self, attrs):
         errors = OrderedDict()
-        countries = attrs.get('countries')
+        countries = attrs.get('countries', [])
         if not countries:
             if not (self.instance and self.instance.countries.exists()):
                 errors.update(dict(
