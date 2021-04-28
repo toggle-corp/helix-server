@@ -125,6 +125,14 @@ class CountryType(DjangoObjectType):
         pagination=PageGraphqlPagination(
             page_size_query_param='pageSize'
         ), accessor='figures'))
+    this_year_nd = graphene.Int()
+    this_year_idps = graphene.Int()
+
+    def resolve_this_year_idps(root, info, **kwargs):
+        return info.context.country_idp_figure_dataloader.load(root.id)
+
+    def resolve_this_year_nd(root, info, **kwargs):
+        return info.context.country_nd_figure_dataloader.load(root.id)
 
     @staticmethod
     def get_queryset(queryset, info):
