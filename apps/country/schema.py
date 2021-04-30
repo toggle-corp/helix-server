@@ -129,10 +129,10 @@ class CountryType(DjangoObjectType):
     this_year_idps = graphene.Int()
 
     def resolve_this_year_idps(root, info, **kwargs):
-        return info.context.country_idp_figure_dataloader.load(root.id)
+        return info.context.country_country_this_year_idps_loader.load(root.id)
 
     def resolve_this_year_nd(root, info, **kwargs):
-        return info.context.country_nd_figure_dataloader.load(root.id)
+        return info.context.country_country_this_year_nd_loader.load(root.id)
 
     @staticmethod
     def get_queryset(queryset, info):

@@ -1,6 +1,6 @@
 from django.utils.functional import cached_property
 
-from apps.country.dataloaders import TotalFigureByCountryCategoryLoader
+from apps.country.dataloaders import TotalFigureThisYearByCountryCategoryLoader
 
 
 class GQLContext:
@@ -12,15 +12,15 @@ class GQLContext:
         return self.request.user
 
     @cached_property
-    def country_idp_figure_dataloader(self):
+    def country_country_this_year_idps_loader(self):
         from apps.entry.models import FigureCategory
-        return TotalFigureByCountryCategoryLoader(
+        return TotalFigureThisYearByCountryCategoryLoader(
             category=FigureCategory.stock_idp_id()
         )
 
     @cached_property
-    def country_nd_figure_dataloader(self):
+    def country_country_this_year_nd_loader(self):
         from apps.entry.models import FigureCategory
-        return TotalFigureByCountryCategoryLoader(
+        return TotalFigureThisYearByCountryCategoryLoader(
             category=FigureCategory.flow_new_displacement_id()
         )
