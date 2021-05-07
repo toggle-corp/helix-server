@@ -208,7 +208,7 @@ class SourcePreviewType(DjangoObjectType):
 
     def resolve_pdf(root, info, **kwargs):
         if root.status == SourcePreview.PREVIEW_STATUS.COMPLETED:
-            return info.context.build_absolute_uri(root.pdf.url)
+            return info.context.request.build_absolute_uri(root.pdf.url)
         return None
 
 
