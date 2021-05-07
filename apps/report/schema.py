@@ -1,6 +1,6 @@
 import graphene
 from graphene_django import DjangoObjectType
-from graphene_django_extras import PageGraphqlPagination, DjangoObjectField
+from graphene_django_extras import DjangoObjectField
 
 from apps.country.models import Country
 from apps.country.schema import CountryType
@@ -19,6 +19,7 @@ from apps.report.models import (
 from apps.report.enums import ReportTypeEnum
 from apps.report.filters import ReportFilter, CountryReportFilter
 from apps.report.enums import ReportGenerationStatusEnum
+from utils.pagination import PageGraphqlPagination
 from utils.graphene.types import CustomListObjectType, CustomDjangoListObjectType
 from utils.graphene.fields import CustomPaginatedListObjectField, DjangoPaginatedListObjectField
 

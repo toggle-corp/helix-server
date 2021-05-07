@@ -5,7 +5,7 @@ from graphene import ObjectType
 from graphene.types.generic import GenericScalar
 from graphene_django import DjangoObjectType
 from graphene_django_extras.converter import convert_django_field
-from graphene_django_extras import PageGraphqlPagination, DjangoObjectField
+from graphene_django_extras import DjangoObjectField
 import logging
 
 from apps.entry.enums import (
@@ -33,6 +33,7 @@ from apps.contrib.models import SourcePreview
 from apps.contrib.enums import PreviewStatusGrapheneEnum
 from apps.contrib.commons import DateAccuracyGrapheneEnum
 from apps.organization.schema import OrganizationListType
+from utils.pagination import PageGraphqlPagination
 from utils.graphene.types import CustomDjangoListObjectType
 from utils.graphene.fields import DjangoPaginatedListObjectField
 

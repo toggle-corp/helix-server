@@ -1,6 +1,6 @@
 import graphene
 from graphene_django import DjangoObjectType
-from graphene_django_extras import DjangoObjectField, PageGraphqlPagination
+from graphene_django_extras import DjangoObjectField
 
 from apps.contrib.commons import DateAccuracyGrapheneEnum
 from apps.crisis.enums import CrisisTypeGrapheneEnum
@@ -18,6 +18,7 @@ from apps.event.models import (
     DisasterType
 )
 from apps.event.filters import EventFilter
+from utils.pagination import PageGraphqlPagination
 from utils.graphene.types import CustomDjangoListObjectType
 from utils.graphene.fields import DjangoPaginatedListObjectField
 

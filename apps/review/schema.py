@@ -1,10 +1,11 @@
 import graphene
 from graphene_django import DjangoObjectType
-from graphene_django_extras import PageGraphqlPagination, DjangoObjectField
+from graphene_django_extras import DjangoObjectField
 
 from apps.review.enums import ReviewStatusEnum
 from apps.review.filters import ReviewCommentFilter
 from apps.review.models import ReviewComment, Review
+from utils.pagination import PageGraphqlPagination
 from utils.graphene.types import CustomDjangoListObjectType
 from utils.graphene.fields import DjangoPaginatedListObjectField
 

@@ -1,10 +1,11 @@
 import graphene
 from graphene_django import DjangoObjectType
-from graphene_django_extras import DjangoObjectField, PageGraphqlPagination
+from graphene_django_extras import DjangoObjectField
 
 from apps.contact.enums import DesignationGrapheneEnum, GenderGrapheneEnum
 from apps.contact.filters import ContactFilter, CommunicationFilter
 from apps.contact.models import Contact, Communication, CommunicationMedium
+from utils.pagination import PageGraphqlPagination
 from utils.graphene.types import CustomDjangoListObjectType
 from utils.graphene.fields import DjangoPaginatedListObjectField
 
